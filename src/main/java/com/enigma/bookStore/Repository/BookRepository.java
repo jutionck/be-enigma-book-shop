@@ -13,8 +13,9 @@ import javax.transaction.Transactional;
 public interface BookRepository extends JpaRepository<Book, Integer> {
     public Book findBookByTitle(String name);
 
+
     @Transactional
     @Modifying
     @Query("DELETE FROM Book b WHERE b.id = :id")
-    public Book removeBook(@Param("id")Integer id);
+    public void removeBook(@Param("id")Integer id);
 }
