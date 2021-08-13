@@ -24,7 +24,7 @@ public class Member {
 
     private String password;
 
-    private Boolean status = true;
+    private Boolean status = false;
 
     @OneToMany(mappedBy = "member")
     @JsonIgnoreProperties("member")
