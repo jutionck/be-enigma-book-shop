@@ -5,6 +5,7 @@ import com.enigma.bookStore.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @Service
@@ -27,6 +28,17 @@ public class BookServiceImpl implements BookService{
     @Override
     public Book getBookByName(String name) {
         return repository.findBookByTitle(name);
+    }
+
+    @Override
+    public Book updateBook(Integer id, Book book) throws FileNotFoundException {
+        Book books = repository.findById(id).get();
+        if (books != null){
+            books = book;
+            return repository.save(books);
+        } else {
+            throw new FileNotFoundException("File not Found");
+        }
     }
 
     @Override

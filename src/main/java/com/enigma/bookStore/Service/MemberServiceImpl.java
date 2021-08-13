@@ -2,7 +2,6 @@ package com.enigma.bookStore.Service;
 
 import com.enigma.bookStore.Entity.Member;
 import com.enigma.bookStore.Repository.MemberRepository;
-import com.enigma.bookStore.dto.RequestSignIn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
