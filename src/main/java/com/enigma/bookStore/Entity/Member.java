@@ -24,7 +24,7 @@ public class Member {
 
     private String password;
 
-    private Boolean status = false;
+    private Integer status = 0;
 
     @OneToMany(mappedBy = "member")
     @JsonIgnoreProperties("member")
@@ -33,7 +33,7 @@ public class Member {
     public Member() {
     }
 
-    public Member(Integer id, String firstName, String lastName, String email, String password, Boolean status) {
+    public Member(Integer id, String firstName, String lastName, String email, String password, Integer status) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -82,11 +82,11 @@ public class Member {
         this.password = password;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }
