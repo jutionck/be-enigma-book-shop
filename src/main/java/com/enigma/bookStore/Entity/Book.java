@@ -30,7 +30,7 @@ public class Book {
     private Integer stock;
 
     @Column(name = "purchase_amount")
-    private Integer purchaseAmount;
+    private Integer purchaseAmount = 0;
 
     @OneToMany(mappedBy = "book")
     @JsonIgnoreProperties("book")

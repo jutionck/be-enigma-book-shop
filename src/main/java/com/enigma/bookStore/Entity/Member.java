@@ -15,6 +15,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "first_name")
     private String firstName;
 
     private String lastName;
@@ -23,7 +24,7 @@ public class Member {
 
     private String password;
 
-    private Boolean status;
+    private Boolean status = true;
 
     @OneToMany(mappedBy = "member")
     @JsonIgnoreProperties("member")
