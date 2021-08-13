@@ -21,7 +21,7 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable Integer id,@RequestBody Book book) throws FileNotFoundException {return service.updateBook(id,book)}
+    public Book updateBook(@PathVariable Integer id,@RequestBody Book book) throws FileNotFoundException {return service.updateBook(id,book);}
 
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Integer id){
