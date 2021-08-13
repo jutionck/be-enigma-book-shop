@@ -27,8 +27,8 @@ public class MemberController {
     }
 
     @DeleteMapping("/{id}")
-    public Member removeUser(@PathVariable Integer id) {
-        return service.deleteMember(id);
+    public void removeUser(@PathVariable Integer id) {
+        service.deleteMember(id);
     }
 
     @GetMapping
