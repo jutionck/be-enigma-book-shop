@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/book")
 public class BookController {
 
