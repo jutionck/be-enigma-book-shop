@@ -32,13 +32,13 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book updateBook(Integer id, Book book) throws FileNotFoundException {
-        Book books = repository.findById(id).get();
-        if (books != null){
-            books = book;
-            return repository.save(books);
+        if (getBookById(id) != null) {
+            book.setId(id);
+            return repository.save(book);
         } else {
-            throw new FileNotFoundException("File not Found");
+           throw new FileNotFoundException("Book Not Found");
         }
+
     }
 
     @Override

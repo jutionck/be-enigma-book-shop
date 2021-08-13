@@ -18,4 +18,5 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Modifying
     @Query("DELETE FROM Book b WHERE b.id = :id")
     public void removeBook(@Param("id")Integer id);
+
 }
