@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface TransactionsRepository extends JpaRepository<MemberhasBooks, Integer> {
 
-    @Query("SELECT * FROM MemberhasBooks m join Book b ")
-    List<MemberhasBooks> findMemberhasBooksByIds(@Param("ids")List<Integer> ids);
+
 }

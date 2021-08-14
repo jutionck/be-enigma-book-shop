@@ -12,4 +12,5 @@ public interface MemberService {
     public Member signIn(String email, String password) throws FileNotFoundException;
     public List<Member> getAllMember();
     public void deleteMember(Integer id, Integer status);
+    public Member getMemberById(Integer id);
 }

@@ -11,6 +11,7 @@ public interface BookService {
     public Book getBookById(Integer id);
     public Book getBookByName(String name);
     public Book updateBook(Integer id, Book book) throws FileNotFoundException;
+    public List<Book> getAllById(Integer[] id);
     public List<Book> getAllBook();
     public void deleteBook(Integer id) throws Exception;
 }

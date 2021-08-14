@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member signIn(String email, String password) throws FileNotFoundException {
         Member searchEmail = repository.findByEmailEqualsAndPasswordEquals(email, password);
-        if (searchEmail!=null){
+        if (searchEmail!=null && searchEmail.getStatus().equals(0)){
             return searchEmail;
         } else {
             throw new FileNotFoundException("Account not found");
@@ -38,6 +38,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void deleteMember(Integer id, Integer status) {
         repository.deleteMember(id, status);
+    }
+
+    @Override
+    public Member getMemberById(Integer id) {
+        return repository.findById(id).get();
     }
 
 

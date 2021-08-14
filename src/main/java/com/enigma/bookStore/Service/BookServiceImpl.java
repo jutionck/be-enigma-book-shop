@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -39,6 +40,11 @@ public class BookServiceImpl implements BookService{
            throw new FileNotFoundException("Book Not Found");
         }
 
+    }
+
+    @Override
+    public List<Book> getAllById(Integer[] id) {
+        return repository.findAllById(Arrays.asList(id));
     }
 
     @Override
