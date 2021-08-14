@@ -8,8 +8,6 @@ public class RequestTransactions {
 
     private Integer quantity;
 
-    private Integer totalPrice;
-
     public Integer getMemberId() {
         return memberId;
     }
@@ -32,13 +30,5 @@ public class RequestTransactions {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public Integer getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Integer totalPrice) {
-        this.totalPrice = totalPrice;
     }
 }
