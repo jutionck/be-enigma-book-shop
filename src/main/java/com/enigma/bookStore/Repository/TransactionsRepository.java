@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface TransactionsRepository extends JpaRepository<MemberhasBooks, Integer> {
 
-
+    public List<MemberhasBooks> findMemberhasBooksByMemberEquals(Integer id);
 }

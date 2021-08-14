@@ -3,7 +3,6 @@ package com.enigma.bookStore.Service;
 import com.enigma.bookStore.Entity.Book;
 import com.enigma.bookStore.Entity.Member;
 import com.enigma.bookStore.Entity.MemberhasBooks;
-import com.enigma.bookStore.Repository.BookRepository;
 import com.enigma.bookStore.Repository.TransactionsRepository;
 import com.enigma.bookStore.dto.RequestTransactions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,11 @@ public class TransactionsServiceImpl implements TransactionsService{
             serviceBook.addBook(book);
         }
         return repository.save(transactions);
+    }
+
+    @Override
+    public List<MemberhasBooks> getByMember(Integer id) {
+        return repository.findMemberhasBooksByMemberEquals(id);
     }
 
 

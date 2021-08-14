@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/transactions")
@@ -22,9 +24,14 @@ public class TransactionsController {
     @PostMapping
     public ResponseEntity<Response<MemberhasBooks>> saveTrx(@RequestBody RequestTransactions trx) {
         Response<MemberhasBooks> response = new Response<>();
-        String message = String.format(ResponseMessage.SUCCESS, "transactions");
+        String message = String.format(ResponseMessage.DATA_INSERTED, "transactions");
         response.setMessage(message);
         response.setData(service.create(trx));
         return ResponseEntity.status(HttpStatus.CREATED).contentType(MediaType.APPLICATION_JSON).body(response);
+    }
+
+    @GetMapping("/{id}")
+    public List<MemberhasBooks> getByMemberId(@PathVariable Integer id){
+        return service.getByMember(id);
     }
 }
