@@ -36,8 +36,8 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void deleteMember(Integer id) {
-        repository.deleteMember(id);
+    public void deleteMember(Integer id, Integer status) {
+        repository.deleteMember(id, status);
     }
 
 
