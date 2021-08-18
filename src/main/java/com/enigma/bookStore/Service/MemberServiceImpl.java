@@ -1,7 +1,11 @@
 package com.enigma.bookStore.Service;
 
+import com.enigma.bookStore.Entity.Book;
 import com.enigma.bookStore.Entity.Member;
+import com.enigma.bookStore.Entity.MemberhasBooks;
 import com.enigma.bookStore.Repository.MemberRepository;
+import com.enigma.bookStore.dto.RequestBook;
+import com.enigma.bookStore.dto.RequestTransactions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +18,11 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     MemberRepository repository;
 
+    @Autowired
+    BookService serviceBook;
+
+    @Autowired
+    TransactionsService serviceTrx;
 
     @Override
     public Member signUp(Member member) {
@@ -43,6 +52,32 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member getMemberById(Integer id) {
         return repository.findById(id).get();
+    }
+
+    @Override
+    public void buyBooks(Integer id, RequestTransactions trx) throws FileNotFoundException {
+        MemberhasBooks transactions = new MemberhasBooks();
+        Member member = getMemberById(id);
+        if(member != null && member.getStatus() == 0){
+           for (RequestBook book: trx.getBuys()) {
+              Integer totalPrice;
+              Book books = serviceBook.getBookById(book.getBookId());
+              if (books != null){
+                  totalPrice = book.getQty() * books.getPrice();
+                  transactions.setMember(member);
+                  transactions.setBook(books);
+                  transactions.setQuantity(book.getQty());
+                  transactions.setTotalPrice(totalPrice);
+                  books.setPurchaseAmount(books.getPurchaseAmount()+book.getQty());
+                  serviceBook.updateBook(book.getBookId(),books);
+              } else {
+                  throw new FileNotFoundException("Book not found");
+              }
+           }
+        } else {
+            throw new FileNotFoundException("Member not found");
+        }
+        serviceTrx.create(transactions);
     }
 
 

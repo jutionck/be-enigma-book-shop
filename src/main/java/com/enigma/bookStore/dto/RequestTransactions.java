@@ -1,34 +1,18 @@
 package com.enigma.bookStore.dto;
 
+import com.sun.istack.NotNull;
+import org.springframework.lang.NonNull;
+
 public class RequestTransactions {
 
-    private Integer memberId;
+    @NotNull
+    private RequestBook[] buys;
 
-    private Integer[] bookId;
-
-    private Integer quantity;
-
-    public Integer getMemberId() {
-        return memberId;
+    public RequestBook[] getBuys() {
+        return buys;
     }
 
-    public void setMemberId(Integer memberId) {
-        this.memberId = memberId;
-    }
-
-    public Integer[] getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Integer[] bookId) {
-        this.bookId = bookId;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setBuys(RequestBook[] buys) {
+        this.buys = buys;
     }
 }

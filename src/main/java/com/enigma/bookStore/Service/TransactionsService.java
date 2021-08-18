@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface TransactionsService {
 
-   public MemberhasBooks create(RequestTransactions trx);
+   public void create(MemberhasBooks trx);
    public List<MemberhasBooks> getByMember(Integer id);
 
 }

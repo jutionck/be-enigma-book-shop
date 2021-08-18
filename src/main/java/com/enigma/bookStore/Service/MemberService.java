@@ -1,6 +1,7 @@
 package com.enigma.bookStore.Service;
 
 import com.enigma.bookStore.Entity.Member;
+import com.enigma.bookStore.dto.RequestTransactions;
 //import com.enigma.bookStore.dto.RequestSignIn;
 
 import java.io.FileNotFoundException;
@@ -13,4 +14,5 @@ public interface MemberService {
     public List<Member> getAllMember();
     public void deleteMember(Integer id, Integer status);
     public Member getMemberById(Integer id);
+    public void buyBooks(Integer id, RequestTransactions trx) throws FileNotFoundException;
 }

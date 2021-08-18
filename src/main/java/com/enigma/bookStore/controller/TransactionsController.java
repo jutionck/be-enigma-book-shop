@@ -21,15 +21,6 @@ public class TransactionsController {
     @Autowired
     TransactionsService service;
 
-    @PostMapping
-    public ResponseEntity<Response<MemberhasBooks>> saveTrx(@RequestBody RequestTransactions trx) {
-        Response<MemberhasBooks> response = new Response<>();
-        String message = String.format(ResponseMessage.DATA_INSERTED, "transactions");
-        response.setMessage(message);
-        response.setData(service.create(trx));
-        return ResponseEntity.status(HttpStatus.CREATED).contentType(MediaType.APPLICATION_JSON).body(response);
-    }
-
     @GetMapping("/{id}")
     public List<MemberhasBooks> getByMemberId(@PathVariable Integer id){
         return service.getByMember(id);

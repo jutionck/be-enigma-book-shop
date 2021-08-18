@@ -24,22 +24,8 @@ public class TransactionsServiceImpl implements TransactionsService{
 
 
     @Override
-    public MemberhasBooks create(RequestTransactions trx) {
-        MemberhasBooks transactions = new MemberhasBooks();
-        for (Integer id: trx.getBookId()) {
-            Integer totalPrice = 0;
-            Book book = serviceBook.getBookById(id);
-            Member member = serviceMember.getMemberById(trx.getMemberId());
-            totalPrice += (book.getPrice() * trx.getQuantity());
-            transactions.setBook(book);
-            transactions.setMember(member);
-            transactions.setQuantity(trx.getQuantity());
-            transactions.setTotalPrice(totalPrice);
-            book.setPurchaseAmount(book.getPurchaseAmount()+trx.getQuantity());
-            book.setStock(book.getStock()- trx.getQuantity());
-            serviceBook.addBook(book);
-        }
-        return repository.save(transactions);
+    public void create(MemberhasBooks trx) {
+        repository.save(trx);
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.enigma.bookStore.controller;
 
 import com.enigma.bookStore.Entity.Member;
+import com.enigma.bookStore.Entity.MemberhasBooks;
 import com.enigma.bookStore.Service.MemberService;
+import com.enigma.bookStore.Service.TransactionsService;
 import com.enigma.bookStore.constant.ResponseMessage;
+import com.enigma.bookStore.dto.RequestTransactions;
 import com.enigma.bookStore.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +23,7 @@ public class MemberController {
 
     @Autowired
     MemberService service;
+
 
     @PostMapping
     public ResponseEntity<Response<Member>> signUp(@RequestBody Member member){
@@ -48,5 +52,10 @@ public class MemberController {
     @GetMapping
     public List<Member> getAllMember(){
         return service.getAllMember();
+    }
+
+    @PutMapping("/book/buys/{id}")
+    public void buyBook(@PathVariable Integer id, @RequestBody RequestTransactions trx) throws FileNotFoundException {
+        service.buyBooks(id, trx);
     }
 }
