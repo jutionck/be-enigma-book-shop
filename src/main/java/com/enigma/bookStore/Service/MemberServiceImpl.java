@@ -62,6 +62,7 @@ public class MemberServiceImpl implements MemberService{
            for (RequestBook book: trx.getBuys()) {
               Integer totalPrice;
               Book books = serviceBook.getBookById(book.getBookId());
+
               if (books != null){
                   totalPrice = book.getQty() * books.getPrice();
                   transactions.setMember(member);
@@ -69,6 +70,7 @@ public class MemberServiceImpl implements MemberService{
                   transactions.setQuantity(book.getQty());
                   transactions.setTotalPrice(totalPrice);
                   books.setPurchaseAmount(books.getPurchaseAmount()+book.getQty());
+                  books.setStock(books.getStock()-book.getQty());
                   serviceBook.updateBook(book.getBookId(),books);
               } else {
                   throw new FileNotFoundException("Book not found");
