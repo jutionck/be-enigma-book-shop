@@ -17,7 +17,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/member")
 public class MemberController {
 

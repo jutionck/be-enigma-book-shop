@@ -1,0 +1,29 @@
+version: '3'
+services:
+  # Backend Service
+  app-service:
+    image: 'be-enigma-shop:1.0'
+    container_name: be-enigma-shop
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb/book_store
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=P@ssw0rd
+      - SPRING_DATASOURCE_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - backend
+
+  # MySQL Service
+  mysqldb:
+    image: mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=P@ssw0rd
+      - MYSQL_DATABASE=book_store
+    networks:
+      - backend
+networks:
+  backend:
